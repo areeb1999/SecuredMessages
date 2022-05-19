@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Settings">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/teal_700">
+
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/savebtn_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/cirlcle_done"
+        android:src="@drawable/ic_baseline_done_24" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:text="SETTINGS"
+        android:fontFamily="sans-serif-condensed"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="3dp"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <ImageView
+        android:id="@+id/img_backbtn"
+        android:layout_width="35.00dp"
+        android:layout_height="35.00dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:tint="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/savebtn_img"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ProfileImage"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/img"
+            app:civ_border_color="#A84589EF"
+            app:civ_border_width="1dp" />
+
+        <EditText
+
+            android:id="@+id/Setting_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/setting_edit_text"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:text="Secure Messages"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+
+
+        <EditText
+
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/setting_edit_text"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:text="Hi there this is Me."
+            android:textColor="#595656"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

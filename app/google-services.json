@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "374530487296",
+    "project_id": "messages-a8e5f",
+    "storage_bucket": "messages-a8e5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374530487296:android:917d34241e17461bfd54e5",
+        "android_client_info": {
+          "package_name": "com.areeb.chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "374530487296-ff34jql4hcned8dtathbi0lku1th1hn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHNuP3RywpamWAZnNXF0zn3OuFTQAqxFk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "374530487296-ff34jql4hcned8dtathbi0lku1th1hn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
