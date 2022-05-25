@@ -23,13 +23,16 @@
         android:id="@+id/SenderMessages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:layout_toLeftOf="@+id/ProfileImage"
         android:layout_centerVertical="true"
+        android:layout_marginStart="5.00dp"
+        android:layout_marginTop="5.00dp"
+        android:layout_marginEnd="5.00dp"
+        android:layout_marginBottom="5.00dp"
+        android:layout_toLeftOf="@+id/ProfileImage"
         android:background="@drawable/sender_shape"
         android:padding="10sp"
-        android:textSize="15sp"
-        android:layout_margin="5.00dp"
-        android:textColor="@color/white"/>
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
 </RelativeLayout>

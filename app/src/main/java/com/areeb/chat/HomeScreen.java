@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class HomeScreen extends AppCompatActivity {
     FirebaseAuth auth;
-
+    // Declaring variables
     RecyclerView MainUserRecyclerView;
     UserAdapter adapter;
     FirebaseDatabase database;
@@ -53,7 +53,7 @@ public class HomeScreen extends AppCompatActivity {
 
 
 
-
+        // Loading user if logged in
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading....");
@@ -94,7 +94,7 @@ public class HomeScreen extends AppCompatActivity {
 
         MainUserRecyclerView = findViewById(R.id.MainUserRecyclerView); // Recycler View in XML that will display all users
         MainUserRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter= new UserAdapter(HomeScreen.this,userArrayList);
+        adapter= new UserAdapter(HomeScreen.this,userArrayList); //Linked to UserAdapter which adds users to list
         MainUserRecyclerView.setAdapter(adapter);
 
         img_setting.setOnClickListener(new View.OnClickListener() { // On click settings button go to settings page

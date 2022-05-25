@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class SecureMessageAdapter extends RecyclerView.Adapter {  // Class represents a hard coded adapter to view users
+public class SecureMessageAdapter extends RecyclerView.Adapter {  // Class represents an adapter to view users in a chat
 
     Context context;
     ArrayList<SecureMessagesModel> securemessagesModelArrayListSecure;
@@ -33,7 +33,7 @@ public class SecureMessageAdapter extends RecyclerView.Adapter {  // Class repre
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //View Holder added manually for list of users
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) { //View Holder added manually for messages sent and received in a chat
 
         if (viewType==ITM_SEND) {
             View view = LayoutInflater.from(context).inflate(R.layout.sender_layout_item,parent,false);
@@ -47,7 +47,7 @@ public class SecureMessageAdapter extends RecyclerView.Adapter {  // Class repre
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { // Displays messages within chat
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) { // Displays messages within chat for when received and sent
 
         SecureMessagesModel secureMessagesModel = securemessagesModelArrayListSecure.get(position);
         if (holder.getClass()==SenderViewHolder.class)

@@ -120,7 +120,7 @@ public class SignUpScreen extends AppCompatActivity { //Declaring Variables to b
                                 DatabaseReference reference = database.getReference().child("user").child(auth.getUid()); // Under the user child the id will be added which will have further details
                                 StorageReference storageReference = storage.getReference().child("upload").child(auth.getUid());
 
-                                if (imageUri != null) { // If image is not provided then stock image is provided
+                                if (imageUri != null) { // If image is provided then file is added to firebase
                                     storageReference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                         @Override
                                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -135,7 +135,7 @@ public class SignUpScreen extends AppCompatActivity { //Declaring Variables to b
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
 
-                                                                if (task.isSuccessful())
+                                                                if (task.isSuccessful()) // Redirect to home class once successful
                                                                 {
                                                                     startActivity(new Intent(getApplicationContext(), HomeScreen.class));
 
@@ -163,7 +163,7 @@ public class SignUpScreen extends AppCompatActivity { //Declaring Variables to b
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
-                                            if (task.isSuccessful())
+                                            if (task.isSuccessful()) // Send to home screen if successful
                                             {
                                                 startActivity(new Intent(getApplicationContext(), HomeScreen.class));
 
@@ -225,7 +225,7 @@ public class SignUpScreen extends AppCompatActivity { //Declaring Variables to b
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // Take 10 seconds to log in once registered
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) { // Dismissing progress dialog if taking too long
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode==10)

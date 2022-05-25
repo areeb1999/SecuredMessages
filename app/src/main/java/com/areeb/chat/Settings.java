@@ -44,7 +44,7 @@ public class Settings extends AppCompatActivity { // Settings screen to change s
     ProgressDialog progressDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // Initialising variables
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -129,13 +129,13 @@ public class Settings extends AppCompatActivity { // Settings screen to change s
             @Override
             public void onClick(View view) {
 
-                progressDialog.show();
+                progressDialog.show(); // Show loading dialog
 
 
-                String name =Setting_Name.getText().toString();
-                String status = Status.getText().toString();
+                String name =Setting_Name.getText().toString(); // Getting text for new name
+                String status = Status.getText().toString(); // Getting Text for new status
 
-                if (Selected_Image_Uri !=null)
+                if (Selected_Image_Uri !=null) // Getting new profile picture
                 {
 
                     storageReference.putFile(Selected_Image_Uri) // Add selected profile picture
@@ -178,7 +178,7 @@ public class Settings extends AppCompatActivity { // Settings screen to change s
 
 
                 }
-                else {
+                else { // If no image is selected
 
                     progressDialog.show();
                     storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -237,8 +237,8 @@ public class Settings extends AppCompatActivity { // Settings screen to change s
             if (data!=null)
             {
                 Selected_Image_Uri = data.getData();
-                profileImg.setImageURI(Selected_Image_Uri);
-                progressDialog.dismiss();
+                profileImg.setImageURI(Selected_Image_Uri); // Setting new image to XML
+                progressDialog.dismiss(); // Dismiss loading dialog
             }
         }
         progressDialog.dismiss();

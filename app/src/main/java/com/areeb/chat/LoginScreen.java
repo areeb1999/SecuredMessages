@@ -47,7 +47,7 @@ public class LoginScreen extends AppCompatActivity { //Declare variable
             @Override
             public void onClick(View view) {
 
-                String email = login_Email.getText().toString();
+                String email = login_Email.getText().toString(); // Get string from login email
                 String password = login_Password.getText().toString();
 
                 if (TextUtils.isEmpty(email)) // If fields are empty
@@ -70,7 +70,7 @@ public class LoginScreen extends AppCompatActivity { //Declare variable
                             if (task.isSuccessful())
                             {
                                 String uid= auth.getUid();
-                                SharedPreferences.Editor editor = getSharedPreferences("Message Folder", MODE_PRIVATE).edit();
+                                SharedPreferences.Editor editor = getSharedPreferences("Message Folder", MODE_PRIVATE).edit(); // Saves ID in temporary storage
                                 editor.putString("uid", uid);
                                 startActivity(new Intent(LoginScreen.this,HomeScreen.class));
 

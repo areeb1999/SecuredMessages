@@ -61,7 +61,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() { // Once anywhere on the list is clicked it will pass the users name, profile pic and user id
+        holder.itemView.setOnClickListener(new View.OnClickListener() { // Once an item on the list is clicked it will pass the users name, profile pic and user id, to start chat
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(homeScreen, ChatScreen.class);
@@ -84,7 +84,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         TextView Namee;
         TextView Statuss;
         LinearLayout items;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) { //Initialising variables
 
             super(itemView);
             User_imagee = itemView.findViewById(R.id.User_image);

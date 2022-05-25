@@ -80,12 +80,13 @@ public class ChatScreen extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-
+        // Contact details of user passed to chat screen from home screen activity
         ReceiverName =getIntent().getStringExtra("name");
         ReciverImage=getIntent().getStringExtra("ReciverImage");
         ReceiverUid =getIntent().getStringExtra("uid");
         secureMessagesModelArrayList = new ArrayList<>();
 
+        // Creating Room ID for Firebase Database
         SenderUid = firebaseAuth.getUid();
 
         SenderRoom = SenderUid+ ReceiverUid;
@@ -117,11 +118,11 @@ public class ChatScreen extends AppCompatActivity {
             }
         });
         
-
+        // Referencing database
         DatabaseReference reference = database.getReference().child("user").child(firebaseAuth.getUid());
         DatabaseReference chatreference = database.getReference().child("chats").child(SenderRoom).child("messages");
 
-        chatreference.addValueEventListener(new ValueEventListener() {
+        chatreference.addValueEventListener(new ValueEventListener() { // For when a new message is received
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -130,7 +131,7 @@ public class ChatScreen extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren())
                 {
                     SecureMessagesModel secureMessagesModel = dataSnapshot.getValue(SecureMessagesModel.class);
-                    String msg= decryptString(secureMessagesModel.message);
+                    String msg= decryptString(secureMessagesModel.message); // Encrypted messages within chat are passed to the decrypt function to display existing messages
                     secureMessagesModel.message=msg;
                     secureMessagesModelArrayList.add(secureMessagesModel);
                 }
@@ -145,7 +146,7 @@ public class ChatScreen extends AppCompatActivity {
         });
 
 
-        reference.addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() { // Add listener to get receivers image and senders image in a conversation
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -173,7 +174,7 @@ public class ChatScreen extends AppCompatActivity {
                     return;
                 }
 
-                editMessage.setText("");
+                editMessage.setText(""); // Clear message field once sent
 
                 Date date = new Date();
 
@@ -221,7 +222,7 @@ public class ChatScreen extends AppCompatActivity {
 
 
     private String encryptString(String originalStr){ // Original String
-        String response = "";
+        String response = ""; // Empty response first created
 
         try {
             // adding a string of 18 characters to be used as key
@@ -234,16 +235,16 @@ public class ChatScreen extends AppCompatActivity {
             key = Arrays.copyOf(key, 16);
 
             SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES"); // AES Functions from developer.android.com
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding"); // Key passed to SecretKeySpec to create a cipher
+            cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec); // Passing AES for encryption by initializing encrypt mode
 
             byte[] input = originalStr.getBytes("UTF-8");
 
-            byte[] cipherTxt = cipher.doFinal(input);
+            byte[] cipherTxt = cipher.doFinal(input); // To format the cipher
 
-            response = Base64.encodeToString(cipherTxt, Base64.DEFAULT); // Grabs encrypted message from sha function
+            response = Base64.encodeToString(cipherTxt, Base64.DEFAULT); // Grabs encrypted message from sha function and stores in response
 
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) { // Methods to catch exceptions
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
             e.printStackTrace();
@@ -263,7 +264,7 @@ public class ChatScreen extends AppCompatActivity {
         String response = "";
 
         try {
-            // string of 18 characters
+            // string of 18 characters using same key from encryption function
             byte[] key = "1234567890ABCDEFGH".getBytes("UTF-8");
 
             MessageDigest sha = MessageDigest.getInstance("SHA-1");
@@ -274,13 +275,13 @@ public class ChatScreen extends AppCompatActivity {
 
             SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES"); // Set to Decrypt mode and then sent back to user in plaintext
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec);
+            cipher.init(Cipher.DECRYPT_MODE, secretKeySpec); // Set to decryption mode
 
             byte[] input = encryptedString.getBytes("UTF-8");
 
-            byte[] cipherTxt = cipher.doFinal(Base64.decode(input, Base64.DEFAULT));
+            byte[] cipherTxt = cipher.doFinal(Base64.decode(input, Base64.DEFAULT)); // Decode the input
 
-            response = new String(cipherTxt);
+            response = new String(cipherTxt); // Saving response
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
